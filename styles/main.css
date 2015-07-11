@@ -1,0 +1,96 @@
+@font-face {
+	font-family: companyFont;
+	src: url(WagashiSerif_Beta1.otf);
+}
+
+header {
+  width: 100%;
+  position: fixed;
+  background-color: #70C3AB;
+  z-index: 1;
+}
+
+#company {
+	display: inline-block;
+	padding: 10px 0 10px 15px;
+}
+
+#company span {
+	color: white;
+	font-family: companyFont;
+	font-weight: 500;
+	font-size: 40px;
+	display: inline-block;
+}
+
+body {
+	background-color: #3A352F;
+	margin: 0;
+}
+
+#login {
+	position: relative;
+	display: inline-block;
+	float: right;
+	padding-right: 15px;
+	padding-top: 18px;
+}
+
+#signInButton {
+	font-size: 25px;
+	font-family: Cambria;
+	color: white;
+	border: none;
+	background-color: #70C3AB;
+}
+
+#homeSearchBox {
+	position: absolute;
+	height: 300px;
+	width: 400px;
+	margin: 0 auto;
+	top: 50%;
+	margin-top: -150px;
+	left: 50%;
+	margin-left: -200px;
+}
+
+#homeSearchBox span {
+	font-family: Cambria;
+	font-size: 34px;
+	color: white;
+	display: block;
+	text-align: center;
+	padding-bottom: 5px;
+}
+
+#homeSearch {
+	width: 310px;
+	height: 30px;
+	border-radius: 5px;
+	border: 1px solid #3A352F;
+	padding-left: 10px;
+	margin-left: 38px;
+}
+
+#globe {
+	text-align: center;
+}
+
+#globe img {
+	text-align: center;
+	width: 350px;
+	padding-bottom: 5px;
+}
+
+#play {
+	position: absolute;
+	text-align: center;
+	top: 17%;
+	left: 43%;
+}
+
+#play i {
+	color: orange;
+}
+
