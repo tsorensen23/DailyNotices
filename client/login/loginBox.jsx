@@ -9,13 +9,13 @@ var LoginBox = React.createClass({
 		this.props.setName(username);
 		this.props.setPassword(password);
 	},
-	handleBSubmitClick: function(e) {
+	handleSubmitClick: function(e) {
 		var correctLogin = false;
+		var username = $('#username').val();
+		var password = $('#password').val();
+		$('#username').val('');
+		$('#password').val('');
 		if(username !== '' && password !== '') {
-			var username = $('#username').val();
-			var password = $('#password').val();
-			$('#username').val('');
-			$('#password').val('');
 			$.ajax({
 				method: 'GET',
 				dataType: 'json',
@@ -37,9 +37,8 @@ var LoginBox = React.createClass({
 	},
 	render: function() {
 		return (
-			<div id="loginPage">
-				
-				<div id="loginContentHolder">
+			<div id="loginContentHolder">
+				<div id="loginContent">
 					<h1>Welcome!</h1>
 					<div id="loginInput">
 						<input id="username" placeholder="Username"></input>
@@ -54,3 +53,5 @@ var LoginBox = React.createClass({
 		);
 	}
 });
+
+module.exports = LoginBox;
