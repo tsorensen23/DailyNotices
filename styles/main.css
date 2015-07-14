@@ -16,12 +16,21 @@ header {
 	padding: 10px 0 10px 15px;
 }
 
-#company span {
+#company button {
 	color: white;
 	font-family: companyFont;
 	font-weight: 500;
 	font-size: 40px;
 	display: inline-block;
+	border: none;
+	background-color: #70C3AB;
+	cursor: pointer;
+}
+
+#profile {
+	display: inline-block;
+	position: relative;
+	padding-left: 70%;
 }
 
 body {
@@ -110,6 +119,12 @@ body {
 	background-color: #E5F3BA;
 }
 
+#loginContentHolder h1 {
+	text-align: center;
+	font-family: Cambria;
+	margin-top: 105px;
+}
+
 #loginContent h1 {
 	text-align: center;
 	font-family: Cambria;
@@ -161,4 +176,24 @@ body {
 
 #submitButton {
 	margin-top: 10px;
+}
+
+#resultsBox {
+	width: 700px;
+	border: 1px solid #E5F3BA;
+	border-radius: 5px;
+	position: absolute;
+	left: 50%;
+	margin-left: -350px;
+	margin-top: 20px;
+	text-align: center;
+	background-color: #E5F3BA;
+}
+
+.item {
+	margin-bottom: 35px;
+}
+
+.item h2 {
+	font-family: Cambria;
 }

@@ -9,89 +9,65 @@ var App = React.createClass({
 	getInitialState: function() {
 		return {page: "home",
 				username: null,
-				password: null
+				password: null,
+				searchResults: null
 		};
 	},
 	setNextPage: function(nextPage) {
 		this.setState({page: nextPage});
 	},
+	goHome: function() {
+		this.setState({page: 'home'});
+	},
 	signIn: function() {
 		this.setState({page: 'login'});
 	},
 	setName: function(username) {
+		console.log("username", username);
 		this.setState({username: name});
+		console.log("state change", this.state.username);
 	},
 	setPassword: function(password) {
 		this.setState({password: password});
+	},
+	updateSearchResults: function(results) {
+		this.setState({searchResults: results});
 	},
 	render: function() {
 		console.log("rendering");
 		console.log(this.state.page);
 		if(this.state.page === "home") {
-			console.log("inside home");
 			return (
 				<div>
-					<HeaderBox signIn={this.signIn} />
-					<HomeSearchBox page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
+					<HeaderBox name={this.state.username} page={this.state.page} goHome={this.goHome} signIn={this.signIn} />
+					<HomeSearchBox searchResults={this.state.searchResults} updateSearchResults={this.updateSearchResults} page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
 				</div>
 			);
 		}
 		if(this.state.page == "login") {
-			console.log("inside right component");
 			return (
 				<div>
-					<HeaderBox signIn={this.signIn} />
-					<LoginBox page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} setName={this.setName} setPassword={this.setPassword} />
+					<HeaderBox name={this.state.username} page={this.state.page} goHome={this.goHome} signIn={this.signIn} />
+					<LoginBox page={this.state.page} name={this.state.username} pw={this.state.password} setNextPage={this.setNextPage} setName={this.setName} setPassword={this.setPassword} />
 				</div>
 			);
 		}
-		// if(this.state.page === "profile") {
-		// 	console.log("inside profile");
-		// 	return (
-		// 		<div>
-		// 			<header>
-		// 				<div id="company">DailyNotices</div>
-		// 				<div id="username">
-		// 					<i className="fa fa-user fa-2x"></i>
-		// 					{this.state.username}
-		// 				</div>
-		// 			</header>
-		// 			<ProfileBox page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
-		// 		</div>
-		// 	);
-		// }
-		// else {
-		// 	console.log("inside else");
-		// 	//signed in
-		// 	if(this.state.username !== null) {
-		// 		return (
-		// 			<div>
-		// 				<header>
-		// 					<div id="company">DailyNotices</div>
-		// 					<div id="username">
-		// 						<i className="fa fa-user fa-2x"></i>
-		// 						{this.state.username}
-		// 					</div>
-		// 				</header>
-		// 				<ResultsBox page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
-		// 			</div>
-		// 		);
-		// 	}
-		// 	//not signed in
-		// 	else {
-		// 		return (
-		// 			<div>
-		// 				<header>
-		// 					<div id="company">DailyNotices</div>
-		// 					<div id="login">
-		// 						<button type="button">Sign in</button>
-		// 					</div>
-		// 				</header>
-		// 				<ResultsBox page={this.state.page} setNextPage={this.setNextPage} />
-		// 			</div>
-		// 		);
-		// 	}
-		// }
+		if(this.state.page === "profile") {
+			return (
+				<div>
+					<HeaderBox page={this.state.page} name={this.state.username} goHome={this.goHome} />
+					<ProfileBox page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
+				</div>
+			);
+		}
+		if(this.state.page === 'search') {
+			return (
+				<div>
+					<HeaderBox name={this.state.username} page={this.state.page} goHome={this.goHome} signIn={this.signIn} />
+					<ResultsBox page={this.state.page} setNextPage={this.setNextPage} />
+				</div>
+			);
+		}
 	}
 });
 
