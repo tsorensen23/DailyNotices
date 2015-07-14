@@ -122,7 +122,6 @@ body {
 #loginContentHolder h1 {
 	text-align: center;
 	font-family: Cambria;
-	margin-top: 105px;
 }
 
 #loginContent h1 {
@@ -196,4 +195,24 @@ body {
 
 .item h2 {
 	font-family: Cambria;
+}
+
+#profileHolder {
+	position: absolute;
+	height: 300px;
+	width: 500px;
+	margin: 0 auto;
+	top: 50%;
+	margin-top: -150px;
+	left: 50%;
+	margin-left: -250px;
+	border: 1px solid #3A352F;
+	border-radius: 5px;
+	background-color: #E5F3BA;
+}
+
+#profileHolder h1 {
+	text-align: center;
+	font-family: Cambria;
+	margin-top: 105px;
 }
