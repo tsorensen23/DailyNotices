@@ -23,8 +23,9 @@ var App = React.createClass({
 		this.setState({page: 'login'});
 	},
 	setName: function(username) {
+		//fixed setName function by referring to correctly passed argument :)
 		console.log("username", username);
-		this.setState({username: name});
+		this.setState({username: username});
 		console.log("state change", this.state.username);
 	},
 	setPassword: function(password) {
@@ -39,31 +40,40 @@ var App = React.createClass({
 		if(this.state.page === "home") {
 			return (
 				<div>
-					<HeaderBox name={this.state.username} page={this.state.page} goHome={this.goHome} signIn={this.signIn} />
-					<HomeSearchBox searchResults={this.state.searchResults} updateSearchResults={this.updateSearchResults} page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
+					<HeaderBox name={this.state.username} page={this.state.page} 
+					goHome={this.goHome} signIn={this.signIn} />
+					<HomeSearchBox searchResults={this.state.searchResults} 
+					updateSearchResults={this.updateSearchResults} page={this.state.page} 
+					name={this.state.username} setNextPage={this.setNextPage} />
 				</div>
 			);
 		}
 		if(this.state.page == "login") {
 			return (
 				<div>
-					<HeaderBox name={this.state.username} page={this.state.page} goHome={this.goHome} signIn={this.signIn} />
-					<LoginBox page={this.state.page} name={this.state.username} pw={this.state.password} setNextPage={this.setNextPage} setName={this.setName} setPassword={this.setPassword} />
+					<HeaderBox name={this.state.username} page={this.state.page} 
+					goHome={this.goHome} signIn={this.signIn} />
+					<LoginBox page={this.state.page} name={this.state.username} 
+					pw={this.state.password} setNextPage={this.setNextPage} 
+					setName={this.setName} setPassword={this.setPassword} />
 				</div>
 			);
 		}
 		if(this.state.page === "profile") {
 			return (
 				<div>
-					<HeaderBox page={this.state.page} name={this.state.username} goHome={this.goHome} />
-					<ProfileBox page={this.state.page} name={this.state.username} setNextPage={this.setNextPage} />
+					<HeaderBox page={this.state.page} name={this.state.username} 
+					goHome={this.goHome} />
+					<ProfileBox page={this.state.page} name={this.state.username} 
+					setNextPage={this.setNextPage} />
 				</div>
 			);
 		}
 		if(this.state.page === 'search') {
 			return (
 				<div>
-					<HeaderBox name={this.state.username} page={this.state.page} goHome={this.goHome} signIn={this.signIn} />
+					<HeaderBox name={this.state.username} page={this.state.page} 
+					goHome={this.goHome} signIn={this.signIn} />
 					<ResultsBox page={this.state.page} setNextPage={this.setNextPage} />
 				</div>
 			);

@@ -2,7 +2,6 @@ var React = require('react');
 
 var LoginBox = React.createClass({
 	handleRegisterClick: function(e) {
-		var self = this;
 		var username = $('#username').val();
 		var password = $('#password').val();
 		this.props.setName(username);
@@ -28,9 +27,10 @@ var LoginBox = React.createClass({
 				url: '/profile',
 				data: JSON.stringify(profileObject),
 				success:function(data) {
+					//bind this and remove self references
 					console.log("successfully posted to db");
-					self.props.setNextPage('profile');
-				}
+					this.props.setNextPage('profile');
+				}.bind(this)
 			});
 		}
 		else {
@@ -38,7 +38,6 @@ var LoginBox = React.createClass({
 		}
 	},
 	handleSubmitClick: function(e) {
-		var self = this;
 		var correctLogin = false;
 		var username = $('#username').val();
 		var password = $('#password').val();
@@ -50,11 +49,12 @@ var LoginBox = React.createClass({
 				dataType: 'json',
 				url: '/profile',
 				success: function(data) {
+					//bind this and remove self references
 					for(var i = 0; i < data.length; i++) {
 						if(data[i].username === username && data[i].password === password) {
-							self.props.setName(username);
-							self.props.setPassword(password);
-							self.props.setNextPage('profile');
+							this.props.setName(username);
+							this.props.setPassword(password);
+							this.props.setNextPage('profile');
 							correctLogin = true;
 							break;
 						}
@@ -62,7 +62,7 @@ var LoginBox = React.createClass({
 					if(correctLogin === false) {
 						alert("Incorrect login credentials. Please try again.");
 					}
-				}
+				}.bind(this)
 			});
 		}
 		else {
@@ -79,8 +79,8 @@ var LoginBox = React.createClass({
 						<input id="password" placeholder="Password"></input>
 					</div>
 					<div id="buttonsHolder">
-						<button id="registerButton" type="button" onClick={this.handleRegisterClick.bind(this)}>Register</button>
-						<button id="submitButton" type="button" onClick={this.handleSubmitClick.bind(this)}>Submit</button>
+						<button id="registerButton" type="button" onClick={this.handleRegisterClick}>Register</button>
+						<button id="submitButton" type="button" onClick={this.handleSubmitClick}>Submit</button>
 					</div>
 				</div>
 			</div>

@@ -3,7 +3,7 @@ var app = express();
 var userController = require('./database/userController.js');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://victoria:password@ds049538.mongolab.com:49538/vleon');
+mongoose.connect('mongodb://travis:abc@ds047692.mongolab.com:47692/dailynotices');
 
 app.use(express.static(__dirname + "./../"));
 app.use(bodyParser.json());

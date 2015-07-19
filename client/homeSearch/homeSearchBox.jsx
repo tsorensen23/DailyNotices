@@ -2,7 +2,6 @@ var React = require('react');
 
 var HomeSearchBox = React.createClass({
 	handleHomeSearch: function(key) {
-		var self = this;
 		var searchTerm = $('#homeSearch').val();
 		if(key.keyCode === 13 && searchTerm !== "") {
 			var holder = $('.item');
@@ -20,6 +19,7 @@ var HomeSearchBox = React.createClass({
 				console.log("request", request);
 				//execute request
 				request.execute(function(response) {
+					console.log(response.result, "this is the result");
 					var results = response.result;
 					$.each(results.items, function(index, item) {
 						$.get('./searchResult.html', function(data) {
