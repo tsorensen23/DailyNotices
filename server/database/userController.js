@@ -1,4 +1,4 @@
-var UserModel = require('./UserModel.js');
+var UserModel = require('./userModel.js');
 
 module.exports = {
 	//use getData function to populate Profile page
