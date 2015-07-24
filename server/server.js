@@ -1,7 +1,7 @@
 var express = require('express');
 var app = express();
 var LikeController = require('./database/LikeController.js');
-var UserController = require('./database/UserController.js');
+var UserController = require('./database/userController.js');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://travis:abc@ds047692.mongolab.com:47692/dailynotices');
