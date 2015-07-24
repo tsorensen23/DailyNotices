@@ -1,4 +1,6 @@
 var React = require('react');
+var HeaderBox = require('./client/header/headerBox.jsx');
+var ProfileBox = require('./client/profile/profileBox.jsx');
 
 var App = React.createClass({
 	getInitialState: function() {
