@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./server/server.js",
-    "postintall": "gulp"
+    "postinstall": "gulp"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
