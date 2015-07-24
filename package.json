@@ -4,7 +4,8 @@
   "description": "news videos",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js"
+    "start": "node ./server/server.js",
+    "postintall": "gulp"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
