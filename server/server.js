@@ -8,8 +8,8 @@ mongoose.connect('mongodb://travis:abc@ds047692.mongolab.com:47692/dailynotices'
 
 app.use(express.static(__dirname + "./../"));
 app.use(bodyParser.json());
-app.get('/profile', UserController.getData);
-app.post('/profile', UserController.postUserProfile);
+app.get('/profile', userController.getData);
+app.post('/profile', userController.postUserProfile);
 app.post('/checkLikes', LikeController.getData);
 app.post('/likes', LikeController.postLikes);
 app.listen(process.env.PORT || 3000);
