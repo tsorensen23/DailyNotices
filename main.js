@@ -1,9 +1,4 @@
 var React = require('react');
-var HeaderBox = require('./client/header/headerBox.jsx');
-var HomeSearchBox = require('./client/homeSearch/homeSearchBox.jsx');
-var LoginBox = require('./client/login/loginBox.jsx');
-var ProfileBox = require('./client/profile/profileBox.jsx');
-var ResultsBox = require('./client/results/resultsBox.jsx');
 
 var App = React.createClass({
 	getInitialState: function() {
@@ -54,20 +49,6 @@ var App = React.createClass({
     });
 	},
 
-	getVideos: function(query) {
-		var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&key=AIzaSyCnDMycEKF7CWFYeXmKubIEmgQabvBAVzo';
-		url = url + "&q=" + query;
-		$.ajax({
-      method: 'GET',
-      dataType: 'json',
-      url: url,
-      success: function(data) {
-      	console.log(data, "this is the data");
-        this.setVideoList(data);
-      }.bind(this)
-    });
-	},
-
 	//&q=china%7Cus-spain&maxResults=10&key={YOUR_API_KEY}
 
 	setNextPage: function(nextPage) {
@@ -88,12 +69,20 @@ var App = React.createClass({
 		this.setState({username: username});
 		// console.log("state change", this.state.username);
 	},
-	setPassword: function(password) {
-		this.setState({password: password});
+
+	getVideos: function() {
+		$.ajax({
+      method: 'GET',
+      dataType: 'json',
+      url: 'https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCnDMycEKF7CWFYeXmKubIEmgQabvBAVzo&part=id&chart=mostPopular',
+      success: function(data) {
+      	console.log(data, "this is the data");
+        this.setVideoList(data);
+      }.bind(this)
+    });
 	},
-	updateSearchResults: function(results) {
-		this.setState({searchResults: results});
-	},
+
+	
 	render: function() {
 		console.log(this.state.page,"render");
 		console.log("Name", this.state.username);
@@ -133,13 +122,10 @@ var App = React.createClass({
 		if(this.state.page === 'search') {
 			return (
 				<div>
-					<HeaderBox name={this.state.username} page={this.state.page} 
-					goHome={this.goHome} signIn={this.signIn} />
-					<ResultsBox page={this.state.page} setNextPage={this.setNextPage} />
+					<h1>hello</h1>
 				</div>
 			);
 		}
-	}
 });
 
 React.render(<App />, document.body);
