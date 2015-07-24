@@ -24,6 +24,7 @@ var HeaderBox = React.createClass({
 			return (
 				<header>
 					<div id="company"><button onClick={this.handleCompanyButton}>DailyNotices</button></div>
+					<div id="welcomeUserName"><p>Welcome {this.props.name} </p> </div>
 					<div id="login">
 						<button id="signInButton" type="button" onClick={this.handleSignInButton}>Sign in</button>
 					</div>

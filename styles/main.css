@@ -1,6 +1,9 @@
 @font-face {
 	font-family: companyFont;
-	src: url(WagashiSerif_Beta1.otf);
+}
+video {
+    height: 200px;
+    width: 200px;
 }
 
 header {
@@ -215,4 +218,32 @@ body {
 	text-align: center;
 	font-family: Cambria;
 	margin-top: 105px;
+}
+
+#results {
+	width: 700px;
+	border: 1px solid #E5F3BA;
+	border-radius: 5px;
+	position: absolute;
+	left: 50%;
+	margin-left: -350px;
+	margin-top: 533px;
+	text-align: center;
+	background-color: #E5F3BA;
+}
+
+#likeBox {
+	display: inline;
+}
+
+#clickDiv {
+	background-color: red;
+	display: block;
+	display: inline;
+}
+
+#ResultsBox {
+	padding-top: 500px;
+	display: block;
+	padding-left: 90px;
 }

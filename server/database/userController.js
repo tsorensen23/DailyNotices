@@ -1,18 +1,19 @@
-var UserProfile = require('./userModel.js');
+var UserModel = require('./UserModel.js');
 
 module.exports = {
 	//use getData function to populate Profile page
 	getData: function(req, res) {
-		UserProfile.find({}, function(err, data) {
+		UserModel.find({}, function(err, data) {
 			if(err) {
 				return res.send(err);
 			}
 			res.send(data);
 		});
 	},
-	//use postUserProfile function when user hits "Register" button
+
+	//use postUserModel function when user hits "Register" button
 	postUserProfile: function(req, res) {
-		UserProfile.create(req.body, function(err, newProfile) {
+		UserModel.create(req.body, function(err, newProfile) {
 			if(err) {
 				return res.send(err);
 			}

@@ -4,6 +4,8 @@ var LoginBox = React.createClass({
 	handleRegisterClick: function(e) {
 		var username = $('#username').val();
 		var password = $('#password').val();
+		console.log("username", username);
+		console.log("password",password);
 		this.props.setName(username);
 		this.props.setPassword(password);
 		$('#username').val('');
@@ -12,14 +14,6 @@ var LoginBox = React.createClass({
 			var profileObject = {
 				username: username,
 				password: password
-				// like1: null,
-				// like2: null,
-				// like3: null,
-				// like4: null,
-				// like5: null,
-				// like6: null,
-				// like7: null,
-				// like8: null,
 			};
 			$.ajax({
 				type: 'POST',
@@ -29,7 +23,7 @@ var LoginBox = React.createClass({
 				success:function(data) {
 					//bind this and remove self references
 					console.log("successfully posted to db");
-					this.props.setNextPage('profile');
+					this.props.setNextPage('home');
 				}.bind(this)
 			});
 		}
@@ -54,7 +48,7 @@ var LoginBox = React.createClass({
 						if(data[i].username === username && data[i].password === password) {
 							this.props.setName(username);
 							this.props.setPassword(password);
-							this.props.setNextPage('profile');
+							this.props.setNextPage('home');
 							correctLogin = true;
 							break;
 						}
