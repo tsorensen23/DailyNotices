@@ -1,7 +1,9 @@
 var React = require('react');
 var HeaderBox = require('./client/header/headerBox.jsx');
+var LoginBox = require('./client/login/loginBox.jsx');
+var ResultsBox = require('./client/results/resultsBox.jsx');
 var ProfileBox = require('./client/profile/profileBox.jsx');
-
+var HomeSearchBox = require('./client/homeSearch/homeSearchBox.jsx');
 var App = React.createClass({
 	getInitialState: function() {
 		return {page: "home",
@@ -16,6 +18,9 @@ var App = React.createClass({
 	componentWillMount: function(){
 		// this.getVideos('china');
 	},
+  setPassword: function(password) {
+    this.setState({passwrd: password});
+  },
 	setVideoLikeState: function(videoid, arrayOfLikes) {
 		var videoObj = {};
 		var video = videoid;
@@ -128,6 +133,7 @@ var App = React.createClass({
 				</div>
 			);
 		}
+  }
 });
 
 React.render(<App />, document.body);
