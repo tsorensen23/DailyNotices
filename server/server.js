@@ -4,7 +4,7 @@ var LikeController = require('./database/LikeController.js');
 var userController = require('./database/userController.js');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://travis:abc@ds047692.mongolab.com:47692/dailynotices');
+mongoose.connect('mongodb://travis:abc123@ds063892.mongolab.com:63892/dailynotices');
 
 app.use(express.static(__dirname + "./../"));
 app.use(bodyParser.json());
