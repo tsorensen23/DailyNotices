@@ -8,7 +8,7 @@ var ResultsBox = React.createClass({
     if(videoArrayList.length > 0) {
     videoArrayList = videoArrayList.map(function(element,i) {
       var likesArray = [];
-      var id = element.id;
+      var id = element.id.videoId;
       var item = "https://www.youtube.com/embed/" + id;
       if(this.props.likedVideosArray !== null && id !== null) {
         this.props.likedVideosArray.forEach(function(likedElement){

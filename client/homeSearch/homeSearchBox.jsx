@@ -3,7 +3,6 @@ var React = require('react');
 var HomeSearchBox = React.createClass({
 	handleHomeSearch: function(key) {
 		if(key.keyCode === 13 && this.state.searchTerm !== null) {
-			console.log(this.state.searchTerm);
 			this.props.getVideos(this.state.searchTerm);
 		}		
 },

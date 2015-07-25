@@ -75,11 +75,13 @@ var App = React.createClass({
 		this.setState({username: username});
 	},
 
-	getVideos: function() {
-		$.ajax({
+	getVideos: function(query) {
+    var url = 'https://www.googleapis.com/youtube/v3/search?part=snippet&';
+    url = url + 'q=' + query + '&key=AIzaSyCnDMycEKF7CWFYeXmKubIEmgQabvBAVzo';
+    $.ajax({
       method: 'GET',
       dataType: 'json',
-      url: 'https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCnDMycEKF7CWFYeXmKubIEmgQabvBAVzo&part=id&chart=mostPopular',
+      url: url,
       success: function(data) {
         this.setVideoList(data);
       }.bind(this)
@@ -88,7 +90,6 @@ var App = React.createClass({
 
 	
 	render: function() {
-		console.log("chatRoomId in render", this.state.chatRoomId);
 		if(this.state.page === "home") {
 			return (
 				<div>
