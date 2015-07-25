@@ -4,8 +4,7 @@
   "description": "news videos",
   "main": "index.js",
   "scripts": {
-    "start": "node ./server/server.js",
-    "postinstall": "node_modules/.bin/gulp browserify"
+    "start": "node ./server/server.js"
   },
   "dependencies": {
     "bluebird": "^2.9.34",
