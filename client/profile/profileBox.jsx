@@ -3,8 +3,10 @@ var React = require('react');
 var ProfileBox = React.createClass({
 	render: function() {
 var comm = new Icecomm('uIWWsTBxfNGUSMwQhO2qwnF5tVizvbg3gTeFaHq5tKgvuHym');
-var channelId= this.props.chatRoomId;
-comm.connect('travis', {audio: true});
+var channelId = "travis";
+channelId= this.props.chatRoomId;
+console.log("channelId", channelId);
+comm.connect(channelId, {audio: true});
 
 comm.on('connected', function(peer) {
    document.body.appendChild(peer.getVideo());

@@ -13,7 +13,7 @@ var App = React.createClass({
 				listOfVideos: [],
 				likedVideos: null,
 				searchTerm: null,
-        chatRoomId: null,
+        chatRoomId: 'travis',
 		};
 	},
 	componentWillMount: function(){
@@ -26,7 +26,6 @@ var App = React.createClass({
 		var videoObj = {};
 		var video = videoid;
 		videoid[video] = arrayOfLikes;
-		console.log(videoid, "statechange");
 		this.setState(videoObj);
 	},
 
@@ -35,16 +34,14 @@ var App = React.createClass({
 		this.setState({listOfVideos: array.items});
 	},
 
-  // setchatRoomId: function(id) {
-  //   this.setState({chatRoomId: id});
-  // },
+  setchatRoomId: function(id) {
+    this.setState({chatRoomId: id});
+  },
 
 	checkLikes: function(array) {
-		console.log("array", array);
     var videoIdArray = array.map(function(element){
     	return element.id.videoId;
     });
-    console.log(videoIdArray, "videoIdArray");
     likeCheckObject = {
     videoIds: videoIdArray
     };
@@ -55,7 +52,6 @@ var App = React.createClass({
       data: JSON.stringify(likeCheckObject),
       success: function(data) {
         //bind this and remove self references
-        console.log("data", data);
         this.setState({likedVideos: data});
       }.bind(this)
     });
@@ -76,10 +72,7 @@ var App = React.createClass({
 	},
 
 	setName: function(username) {
-		//fixed setName function by referring to correctly passed argument :)
-		// console.log("username", username);
 		this.setState({username: username});
-		// console.log("state change", this.state.username);
 	},
 
 	getVideos: function() {
@@ -88,7 +81,6 @@ var App = React.createClass({
       dataType: 'json',
       url: 'https://www.googleapis.com/youtube/v3/videos?key=AIzaSyCnDMycEKF7CWFYeXmKubIEmgQabvBAVzo&part=id&chart=mostPopular',
       success: function(data) {
-      	console.log(data, "this is the data");
         this.setVideoList(data);
       }.bind(this)
     });
@@ -96,17 +88,16 @@ var App = React.createClass({
 
 	
 	render: function() {
-		console.log(this.state.page,"render");
-		console.log("Name", this.state.username);
+		console.log("chatRoomId in render", this.state.chatRoomId);
 		if(this.state.page === "home") {
 			return (
 				<div>
-					// <HeaderBox name={this.state.username} page={this.state.page} 
-					// goHome={this.goHome} signIn={this.signIn} />
+					<HeaderBox name={this.state.username} page={this.state.page} 
+					goHome={this.goHome} signIn={this.signIn} />
 					<HomeSearchBox searchResults={this.state.searchResults} 
 					updateSearchResults={this.updateSearchResults} page={this.state.page} 
 					name={this.state.username} setNextPage={this.setNextPage} getVideos={this.getVideos} />
-					<ResultsBox setChatRoom={this.setChatRoom} videoArray={this.state.listOfVideos} username={this.state.username} likedVideosArray={this.state.likedVideos} checkLikes={this.checkLikes} setNextPage={this.setNextPage} />
+					<ResultsBox setChatId={this.setchatRoomId} videoArray={this.state.listOfVideos} username={this.state.username} likedVideosArray={this.state.likedVideos} checkLikes={this.checkLikes} setNextPage={this.setNextPage} />
 				</div>
 			);
 		}
@@ -126,7 +117,7 @@ var App = React.createClass({
 				<div>
 					<HeaderBox page={this.state.page} name={this.state.username} 
 					goHome={this.goHome} />
-					<ProfileBox page={this.state.page} name={this.state.username} 
+					<ProfileBox chatRoomId={this.state.chatRoomId} page={this.state.page} name={this.state.username} 
 					setNextPage={this.setNextPage} />
 				</div>
 			);

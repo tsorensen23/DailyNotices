@@ -4,7 +4,6 @@ var Promise = require('bluebird');
 var Results = React.createClass({
   handleClick: function() {
     var IceSomebody=confirm("want to chat with other people who like this video?");
-    console.log(IceSomebody);
 
     var likeObject = {
       username: this.props.username,
@@ -18,9 +17,9 @@ var Results = React.createClass({
           data: JSON.stringify(likeObject),
           success:function(data) {
             //bind this and remove self references
-            console.log("successfully posted likes to db", data);
             // this.props.checkLikes(data);
-            // this.props.setChatRoom(this.props.id);
+            console.log(this.props.id,"id");
+            this.props.setChatId(this.props.id);
             if(IceSomebody) {
               this.props.setNextPage('profile');
             }
@@ -30,7 +29,6 @@ var Results = React.createClass({
   },
 
   render: function() {
-    console.log("likes", this.props.likes);
     var likes = this.props.likes.map(function(element) {
       var name = element + " ";
       return (<div> {name} </div>);

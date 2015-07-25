@@ -8,11 +8,8 @@ var ResultsBox = React.createClass({
     if(videoArrayList.length > 0) {
     videoArrayList = videoArrayList.map(function(element,i) {
       var likesArray = [];
-      console.log("element", element);
       var id = element.id;
       var item = "https://www.youtube.com/embed/" + id;
-      console.log("id", id);
-      console.log("likedVideosArray", this.props.likedVideosArray)
       if(this.props.likedVideosArray !== null && id !== null) {
         this.props.likedVideosArray.forEach(function(likedElement){
         // console.log("likedElement.videoId", likedElement.videoId);
@@ -22,11 +19,10 @@ var ResultsBox = React.createClass({
           }
         });
       } 
-      console.log("this is the likesArray", likesArray);
 
       return (
         <div >
-          <Results item={item} id={id} index={i} username={this.props.username} likes={likesArray} checkLikes={this.props.checkLikes} setNextPage={this.props.setNextPage} />
+          <Results setChatId={this.props.setChatId} item={item} id={id} index={i} username={this.props.username} likes={likesArray} checkLikes={this.props.checkLikes} setNextPage={this.props.setNextPage} />
         </div>
         );           
     }.bind(this));
