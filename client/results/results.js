@@ -3,7 +3,7 @@ var Promise = require('bluebird');
 
 var Results = React.createClass({
   handleClick: function() {
-    var IceSomebody=confirm("want to chat with other losers...");
+    var IceSomebody=confirm("want to chat with other people who like this video?");
     console.log(IceSomebody);
 
     var likeObject = {
@@ -20,6 +20,7 @@ var Results = React.createClass({
             //bind this and remove self references
             console.log("successfully posted likes to db", data);
             // this.props.checkLikes(data);
+            // this.props.setChatRoom(this.props.id);
             if(IceSomebody) {
               this.props.setNextPage('profile');
             }

@@ -12,7 +12,8 @@ var App = React.createClass({
 				searchResults: null,
 				listOfVideos: [],
 				likedVideos: null,
-				searchTerm: null
+				searchTerm: null,
+        chatRoomId: null,
 		};
 	},
 	componentWillMount: function(){
@@ -33,6 +34,10 @@ var App = React.createClass({
 		this.checkLikes(array.items);
 		this.setState({listOfVideos: array.items});
 	},
+
+  // setchatRoomId: function(id) {
+  //   this.setState({chatRoomId: id});
+  // },
 
 	checkLikes: function(array) {
 		console.log("array", array);
@@ -101,7 +106,7 @@ var App = React.createClass({
 					<HomeSearchBox searchResults={this.state.searchResults} 
 					updateSearchResults={this.updateSearchResults} page={this.state.page} 
 					name={this.state.username} setNextPage={this.setNextPage} getVideos={this.getVideos} />
-					<ResultsBox videoArray={this.state.listOfVideos} username={this.state.username} likedVideosArray={this.state.likedVideos} checkLikes={this.checkLikes} setNextPage={this.setNextPage} />
+					<ResultsBox setChatRoom={this.setChatRoom} videoArray={this.state.listOfVideos} username={this.state.username} likedVideosArray={this.state.likedVideos} checkLikes={this.checkLikes} setNextPage={this.setNextPage} />
 				</div>
 			);
 		}
