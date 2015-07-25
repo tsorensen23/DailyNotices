@@ -5,8 +5,8 @@ var watchify = require('watchify');
 var reactify = require('reactify');
 var nodemon = require('gulp-nodemon');
 
-gulp.task('browserify', scripts)
-    .task('serve', serve);
+gulp.task('browserify', scripts);
+    // .task('serve', serve);
 
 function scripts() {
   var bundler = browserify({
@@ -17,31 +17,32 @@ function scripts() {
     packageCache: {},
     fullPaths: true
   });
-  var watcher = watchify(bundler);
-
-  return watcher
-    .on('update', function() {
-      var updateStart = Date.now();
-      console.log('Updating!');
-      watcher.bundle()
-      .on('error', function(err) {
-        console.log('Error with compiling components', err.message);
-      })
-      .pipe(source('bundle.js'))
-      .pipe(gulp.dest('./build/'));
-      console.log('Updated!', (Date.now() - updateStart) + 'ms');
-    })
-    // Create the initial bundle when starting the task
-    .bundle()
-    .on('error', function(err) {
-      console.log('Error with compiling components', err.message);
-    })
-    .pipe(source('bundle.js'))
-    .pipe(gulp.dest('./build/'));
 }
+//   var watcher = watchify(bundler);
 
-function serve() {
- nodemon({script: './server/server.js'});
-}
+//   return watcher
+//     .on('update', function() {
+//       var updateStart = Date.now();
+//       console.log('Updating!');
+//       watcher.bundle()
+//       .on('error', function(err) {
+//         console.log('Error with compiling components', err.message);
+//       })
+//       .pipe(source('bundle.js'))
+//       .pipe(gulp.dest('./build/'));
+//       console.log('Updated!', (Date.now() - updateStart) + 'ms');
+//     })
+//     // Create the initial bundle when starting the task
+//     .bundle()
+//     .on('error', function(err) {
+//       console.log('Error with compiling components', err.message);
+//     })
+//     .pipe(source('bundle.js'))
+//     .pipe(gulp.dest('./build/'));
+// }
 
-gulp.task('default', ['browserify', 'serve']);
+// function serve() {
+//  nodemon({script: './server/server.js'});
+// }
+
+// gulp.task('default', ['browserify', 'serve']);
