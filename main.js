@@ -101,8 +101,8 @@ var App = React.createClass({
 		if(this.state.page === "home") {
 			return (
 				<div>
-					<HeaderBox name={this.state.username} page={this.state.page} 
-					goHome={this.goHome} signIn={this.signIn} />
+					// <HeaderBox name={this.state.username} page={this.state.page} 
+					// goHome={this.goHome} signIn={this.signIn} />
 					<HomeSearchBox searchResults={this.state.searchResults} 
 					updateSearchResults={this.updateSearchResults} page={this.state.page} 
 					name={this.state.username} setNextPage={this.setNextPage} getVideos={this.getVideos} />
